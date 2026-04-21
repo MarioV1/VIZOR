@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <launch>
   <arg name="use_joy" default="false"/>
+  <arg name="run_correct" default="true"/>
   <include file="$(find pan_tilt_bringup)/launch/panTilt_bringup.launch">
     <arg name="pub_urdf" value="true"/>
   </include>
@@ -26,7 +27,14 @@
   
   <!-- Controlador PTZ simple para flechas y movimiento -->
   <node name="simple_ptz_controller" pkg="pan_tilt_description" type="simple_ptz_controller.py" output="screen"/>
-  
+
+  <!-- PTZ correct once (ORB / OptFlow with selectable method via 'm' key) -->
+  <!-- Enable with: roslaunch pan_tilt_description panTilt_view.launch run_correct:=true -->
+  <group if="$(arg run_correct)">
+    <node name="ptz_correct_once" pkg="pan_tilt_description"
+          type="ptz_correct_once.py" output="screen" required="true"/>
+  </group>
+
   <!-- Esperar un momento para asegurar que el PCD esté publicando -->
   <node name="rviz" pkg="rviz" type="rviz" 
         args="-d $(find pan_tilt_description)/rviz/camera_zoom_cloud_marker.rviz" 
