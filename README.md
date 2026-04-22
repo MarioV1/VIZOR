@@ -36,7 +36,7 @@ This project implements a **ORB/Optical Flow -based control system** for a Pan-T
   - IQR-PTU2 pan-tilt base
 
 ## 🚀 Installation & Setup
-
+**Camera ip: 192.168.0.90**
 ## 1. Install system dependencies
 **Instructions for ROS Noetic**
 ```bash
