@@ -94,7 +94,7 @@ cd ~/ptz_ws
 ```
 
 ```bash
-roslaunch pan_tilt_description panTilt_view.launch
+roslaunch pan_tilt_bringup panTilt_view.launch
 ```
 ### Tracking
 ```bash
